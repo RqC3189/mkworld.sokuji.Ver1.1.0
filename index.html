@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="google-site-verification" content="r4Du309zGexbylHfIMed9PtfEZ5yIjVrpjhX-WtgHUE" />
     <title>マリオカートワールド　即時集計機</title>
     <style>
         body { font-family: sans-serif; padding: 20px; max-width: 1150px; margin: 0 auto; line-height: 2.0; background-color: #f4f7f9; }
@@ -31,6 +30,8 @@
         .btn-clear:hover {background-color: #0097a7;}
         .btn-OBSwindow {background-color: #9c27b0; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px; width: 100%;}
         .btn-OBSwindow:hover {background-color: #7b1fa2; }
+        .btn-consumed-courses {padding: 4px 12px; background-color: #e2e6ea; color: #333; border: none; border-radius: 4px; font-size: 13px; cursor: pointer; transition: background-color 0.2s ease-in-out;}
+        .btn-consumed-courses:hover {background-color: #d3d9df;}
 
         .output-box { margin: 0 0 10px 0; padding: 15px; background-color: #f8f9fa; color: #333333; border: 2px solid #6c9bcf; border-radius: 4px; font-weight: bold; font-size: 1.1em; word-break: break-all; min-height: 1.5em; line-height: 1.8; }
         
@@ -116,13 +117,17 @@
         .suggest-item { padding: 5px 10px; cursor: pointer; font-size: 13px; }
         .suggest-item:hover, .suggest-item.active { background-color: #e9ecef; }
 
+        .patch-notes-flex {list-style: none; padding-left: 0;margin: 0;}
+        .patch-notes-flex li {display: flex;margin-bottom: 8px;}
+        .patch-notes-flex .version {flex-shrink: 0; width: 75px; }
+
     </style>
 </head>
 <body>
 
     <h2>
         マリオカートワールド　即時集計機（24人対戦用）
-        <span style="float: right; font-size: 20px; font-weight: normal; color: #666; margin-top: 8px;">Ver.1.2.0</span>
+        <span style="float: right; font-size: 20px; font-weight: normal; color: #666; margin-top: 8px;">Ver.1.3.0</span>
     </h2>
 
     <div class="card" style="margin-bottom: 20px;">
@@ -292,6 +297,7 @@
                             <li>レース情報の修正中は、順位の自動カーソル移動は解除されます。修正が完了したら、「レース情報を登録」ボタンをクリックしてください。</li>   
                             <li>「レース情報を登録」ボタンをクリックした時点で、入力した情報に問題がある場合、再度警告が出ます。改めて修正をしてください。</li>
                             <li>順位入力枠は矢印キーで移動可能です。レース情報修正の際にお使いください。</li>
+                            <li>Ctrlキー＋左右矢印キーで、選択した位置以降のチームをまとめてずらすことができます。順位入力で抜かしてしまったチームの枠を空けたいときなどに便利です。</li>
                             <li>「クリア」ボタンをクリックすると、入力・修正中の順位がリセットされます。最初から順位を入力したい場合などにお使いください。</li>
                         </ul>
 
@@ -583,6 +589,7 @@
                                     </li>
                                 </ul> 
                             </li>
+                            <li>「消費コース」ボタンをクリックすると、これまで走ったコースを表にして参照できます。右上の「コピー」をクリックすると、消費コースを文章としてコピーできます。コースリピックの対策などにお使いください。</li>
                             <li>「クリア」ボタンをクリックすると、そのレースの結果がリセットされます。レース情報を最初から修正したい場合などにお使いください。</li>
                             <li>「削除」ボタンをクリックすると、そのレースの結果が削除されます。入力後にそのレースがカウントされなかった場合などにお使いください。</li>
                         </ul>
@@ -597,11 +604,27 @@
                         </ul>
 
                         <h4 id="desc-version" style="border-bottom: 1px solid #dee2e6; padding-bottom: 5px; margin-top: 0; margin-bottom: 10px; font-size: 1em; color: #343a40;">バージョン履歴</h4>
-                        <ul style="padding-left: 20px; margin-bottom: 25px;">
-                            <li>Ver.1.2.0　配信用の点数表を生成する機能を追加しました。順位の自動補完機能を調整しました。</li>
-                            <li>Ver.1.1.1　軽微な不具合を修正し、詳細な説明の文章を一部変更しました。</li>
-                            <li>Ver.1.1.0　機能を多数追加しました。使用方法と詳細な説明を追加しました。</li>
-                            <li>Ver.1.0.0　リリースしました。</li>
+                        <ul class="patch-notes-flex">
+                            <li>
+                                <span class="version">Ver.1.3.0</span>
+                                <span>コース追加に伴い、コース名自動変換を更新しました。順位入力漏れ修正のための、チーム順位スライド機能を追加しました。消費コースを参照しやすくしました。その他、軽微な不具合を修正しました。</span>
+                            </li>
+                            <li>
+                                <span class="version">Ver.1.2.0</span>
+                                <span>配信用の点数表を生成する機能を追加しました。順位の自動補完機能を調整しました。</span>
+                            </li>
+                            <li>
+                                <span class="version">Ver.1.1.1</span>
+                                <span>軽微な不具合を修正し、詳細な説明の文章を一部変更しました。</span>
+                            </li>
+                            <li>
+                                <span class="version">Ver.1.1.0</span>
+                                <span>機能を多数追加しました。使用方法と詳細な説明を追加しました。</span>
+                            </li>
+                            <li>
+                                <span class="version">Ver.1.0.0</span>
+                                <span>リリースしました。</span>
+                            </li>
                         </ul>
 
                         <h4 id="desc-afterword" style="border-bottom: 1px solid #dee2e6; padding-bottom: 5px; margin-top: 0; margin-bottom: 10px; font-size: 1em; color: #343a40;">あとがき</h4>
@@ -801,8 +824,28 @@
             </div>
 
             <div class="card">
-                <label>レース履歴</label>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <label style="margin: 0;">レース履歴</label>
+                    <button class="btn-consumed-courses" onclick="showConsumedCourses()">消費コース</button>
+                </div>
                 <div id="historyContainer" class="history-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="consumedCoursesModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+        <div style="background: white; padding: 20px; border-radius: 8px; width: 80%; max-width: 500px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <button onclick="closeConsumedCourses()" style="background: none; border: none; font-size: 24px; cursor: pointer; color: #333; padding: 0 10px; z-index: 1;">×</button>
+            <h3 style="position: absolute; left: 50%; transform: translateX(-50%); margin: 0; font-size: 16px; white-space: nowrap; pointer-events: none;">消費コース一覧</h3>
+            <button onclick="copyConsumedCourses(this)" style="padding: 5px 10px; cursor: pointer; min-width: 105px; text-align: center; z-index: 1;">コピー</button>
+        </div>
+    
+            <div style="max-height: 60vh; overflow-y: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; border: 1px solid #ddd;">
+                    <tbody id="consumedCoursesBody">
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -839,26 +882,36 @@
             { id: 'kir', full: 'キラーシップ', abbr: 'キラシ', enAbbr: 'rAF', inputs: ['kir', 'きｒ','きら','raf','らｆ','af','ship','sippu','cippu','しｐ','しっぷ','air','あいｒ'] },
             { id: 'dksu', full: 'DKスノーマウンテン', abbr: 'DKスノ', enAbbr: 'rDKP', inputs: ['dksu', 'DKす', 'DKす','DKSU','dkp','rdk','suno','すの','yu','ゆ','ゆｋ','ゆき','雪','pa','ぱ','ぱｓ','ぱす'] },
             { id: 'ro', full: 'ロゼッタてんもんだい', abbr: 'ロゼてん', enAbbr: 'SP', inputs: ['ro', 'ろ','ろｚ','ろぜ','sp','te','て','てｎ','てん','天','star','ｓたｒ'] },
-            { id: 'ai', full: 'アイスビルディング', abbr: 'アイビル', enAbbr: 'rSHS', inputs: ['ais', 'あい','shs','rsh','bir','びｒ','びる','ic','いｃ','sky'] },
+            { id: 'ai', full: 'アイスビルディング', abbr: 'アイビル', enAbbr: 'rSHS', inputs: ['ais', 'あい','shs','rsh','bir','びｒ','びる','ic','sky'] },
+            { id: 'va', full: 'SFCバニラレイク1', abbr: 'バニラレイク', enAbbr: 'rVL1', inputs: ['sfcv', 'sfcb','sfcば','ban','ばｎ','v','ばに','reik','れいｋ','れいく','l'] },
             { id: 'wariosi', full: 'ワリオシップ', abbr: 'ワリシ', enAbbr: 'rWSh', inputs: ['wariosi','wariosh','warioci', 'わりおし', 'warisi','warici', 'warish','わりし','rwsh','wsh','WSH','ship','sippu','cippu','しｐ','しっぷ'] },
-            { id: 'no', full: 'ノコノコビーチ', abbr: 'ノコビ', enAbbr: 'rKTB', inputs: ['no', 'の','のｋ','のこ','rk','rK','kt','kam','kih','かｍ','かめ','亀','koo','こお','bi-ti','bi-chi','びーち','beach','べあｃｈ'] },
+            { id: 'no', full: 'ノコノコビーチ', abbr: 'ノコビ', enAbbr: 'rKTB', inputs: ['nokonokobi-ti','noconocobi-ti','nokonokobi-chi','noconocobi-chi','nokobi','nocobi','のこのこびーち','のこび','rktb','ktb','kamehama','かめはま','koopatroopabeach','こおぱｔろおぱべあｃｈ','bi-ti','bi-chi','びーち','beach','べあｃｈ'] },
+            { id: 'no1', full: 'SFCノコノコビーチ1', abbr: 'SFCノコビ', enAbbr: 'rKTB1', inputs: ['sfcn','sfcの','sfck','nokonokobi-ti1','noconocobi-ti1','nokonokobi-chi1','noconocobi-chi1','nokobi1','nocobi1','のこのこびーち1','のこび1','rktb1','ktb1','kamehama1','かめはま1','koopatroopabeach1','こおぱｔろおぱべあｃｈ1','bi-ti1','bi-chi1','びーち1','beach1','べあｃｈ'] },
             { id: 'ri', full: 'リバーサイドサファリ', abbr: 'リバサ', enAbbr: 'FO', inputs: ['ri', 'り','りｂ','りば','fo','ふぉ','saf','sah','さｆ','さｈ','さふ','far','oa','おあ','ふぁｒ'] },
             { id: 'pi-tis', full: 'ピーチスタジアム', abbr: 'ピチスタ', enAbbr: 'PS', inputs: ['pi-tis', 'pi-chis', 'ぴーちｓ','ぴーちす', 'pitis', 'pichis', 'ぴちｓ','ぴちす','ps','momos','ももｓ','ももす','桃ｓ','桃す','sutajiamu','sutaziamu','すたじあむ','stadium','peachs','ぺあｃｈｓ'] },
             { id: 'pi-chib', full: 'ピーチビーチ', abbr: 'ピチビ', enAbbr: 'rPB', inputs: ['pi-chib', 'pi-tib', 'ぴーちｂ','ぴーちび', 'pitib', 'pichib', 'ぴちｂ','ぴちび','pb','rp','momoh','ももｈ','ももは','桃ｈ','桃は','桃浜','bi-ti','bi-chi','びーち','beach','べあｃｈ','peachb','ぺあｃｈｂ'] },
             { id: 'so', full: 'ソルティータウン', abbr: 'ソルティー', enAbbr: 'SSS', inputs: ['so', 'そ','そｒ','そる','ss','ta','た','たう','sal','さｌ'] },
             { id: 'dh', full: 'ディノディノジャングル', abbr: 'ディノディノ', enAbbr: 'rDDJ', inputs: ['de','dh', 'で','でぃ', 'ddj','rdd','j','ja','di','じゃ','ぢ','ぢｎ'] },
-            { id: 'ha', full: 'ハテナしんでん', abbr: 'ハテしん', enAbbr: 'GBR', inputs: ['ha', 'は','はｔ','はて','g','gb','sinn','sind','shinn','shind','cinn','cind','しんｄ','しんで','?','？','神','神ｄ','神で','gr','bl'] },
+            { id: 'ha', full: 'ハテナしんでん', abbr: 'ハテしん', enAbbr: 'GBR', inputs: ['ha', 'は','はｔ','はて','gr','gb','sinn','sind','shinn','shind','cinn','cind','しんｄ','しんで','?','？','神','神ｄ','神で','bl'] },
             { id: 'pu', full: 'プクプクフォールズ', abbr: 'プクフォ', enAbbr: 'CCF', inputs: ['pu', 'ぷ','ぷｋ','ぷく','ccf','che','ちぇ'] },
             { id: 'syo', full: 'ショーニューロード', abbr: 'ショーニュー', enAbbr: 'DD', inputs: ['syo', 'sho','sixo','shixyo','silyo','shilyo','cixyo','cilyo','しょ','鍾','鍾ｎ','鍾に','dde','da','っで','だ','だｎ'] },
-            { id: 'o', full: 'おばけシネマ', abbr: 'おばシネ', enAbbr: 'BCi', inputs: ['o', 'お','ob','おｂ','おば','bci','ｂし','sine','shine','cine','ba','ば','ばｋ','ばけ','しね','boo','ぼお'] },
+            { id: 'obakes', full: 'おばけシネマ', abbr: 'おばシネ', enAbbr: 'BCi', inputs: ['obakes', 'obakec','おばけｓ','おばけｃ','おばけし','obas','obac','おばｓ','おばし','bci','ｂし','sine','shine','cine','bak','ばｋ','ばけ','しね','boo','ぼお'] },
+            { id: 'obaken1', full: 'SFCおばけぬま1', abbr: 'おばけぬま1', enAbbr: 'rGV1', inputs: ['sfcobakenuma1','obakenuma1','おばけぬま1','sfcおばけぬま1','ｓｆこばけぬま１','おばけ沼1','お化けぬま1','お化け沼1','rgv1','gv1','numa1','ぬま1','沼1','ghostvalley1','ｇほｓｔヴぁっぇｙ１','sfcghostvalley1','ｓｆｃｇほｓｔヴぁっぇｙ１'] },
+            { id: 'obaken2', full: 'SFCおばけぬま2', abbr: 'おばけぬま2', enAbbr: 'rGV2', inputs: ['sfcobakenuma2','obakenuma2','おばけぬま2','sfcおばけぬま2','ｓｆこばけぬま２','おばけ沼2','お化けぬま2','お化け沼2','rgv2','gv2','numa2','ぬま2','沼2','ghostvalley2','ｇほｓｔヴぁっぇｙ２','sfcghostvalley1','ｓｆｃｇほｓｔヴぁっぇｙ２'] },
+            { id: 'obaken3', full: 'SFCおばけぬま3', abbr: 'おばけぬま3', enAbbr: 'rGV3', inputs: ['sfcobakenuma3','obakenuma3','おばけぬま3','sfcおばけぬま3','ｓｆこばけぬま３','おばけ沼3','お化けぬま3','お化け沼3','rgv3','gv3','numa3','ぬま3','沼3','ghostvalley3','ｇほｓｔヴぁっぇｙ３','sfcghostvalley1','ｓｆｃｇほｓｔヴぁっぇｙ３'] },
             { id: 'ho', full: 'ホネホネツイスター', abbr: 'ホネツイ', enAbbr: 'DBB', inputs: ['ho', 'ほ','ほｎ','ほね','骨','db','tui','tsui','つい','dr','bon','burn','ぼｎ','ぶｒｎ'] },
-            { id: 'mo', full: 'モーモーカントリー', abbr: 'モモカン', enAbbr: 'rMMM', inputs: ['mo-', 'もー','momok','ももｋ','ももか','momoc','ももｃ','桃ｋ','ももか','kan','かｎ','かん','can', 'rm','mm','usi','ushi','uci','うし','牛','moo','mea','もお','めあ'] },
-            { id: 'ty', full: 'チョコマウンテン', abbr: 'チョコマ', enAbbr: 'rCM', inputs: ['tyo','cho','cyo','rc','cm','ち','ちょ'] },
+            { id: 'mo', full: 'モーモーカントリー', abbr: 'モモカン', enAbbr: 'rMMM', inputs: ['mo-', 'もー','momok','ももｋ','ももか','momoc','ももｃ','桃ｋ','ももか','kan','かｎ','かん','can', 'rmm','mm','usi','ushi','uci','うし','牛','moo','mea','もお','めあ'] },
+            { id: 'tyokom', full: 'チョコマウンテン', abbr: 'チョコマ', enAbbr: 'rCM', inputs: ['tyokom','chokom','cyokom','rcm','cm','ちょこま','ちょこｍ','chocom'] },
+            { id: 'tyokor1', full: 'SFCチョコレーとう1', abbr: 'チョコレー島1', enAbbr: 'rCI1', inputs: ['sfcchokore-tou1','sfctyokore-tou1','sfccyokore-tou1','sfcchocore-tou1','sfctyocore-tou1','sfccyocore-tou1','ｓｆっちょこれーとう１','sfcちょこれーとう1','sfcチョコレー島1','tyokore-tou1','chokore-tou1','cyokore-tou1','tyocore-tou1','chocore-tou1','cyocore-tou1','rci1','ci1','ｒし１','ちょこれーとう1','チョコレー島1','chocoisland1','ちょこいｓぁんｄ１','sfcchocoisland1','ｓｆっちょこいｓぁんｄ１'] },
+            { id: 'tyokor2', full: 'SFCチョコレーとう2', abbr: 'チョコレー島2', enAbbr: 'rCI2', inputs: ['sfcchokore-tou2','sfctyokore-tou2','sfccyokore-tou2','sfcchocore-tou2','sfctyocore-tou2','sfccyocore-tou2','ｓｆっちょこれーとう２','sfcちょこれーとう2','sfcチョコレー島2','tyokore-tou2','chokore-tou2','cyokore-tou2','tyocore-tou2','chocore-tou2','cyocore-tou2','rci2','ci2','ｒし２','ちょこれーとう2','チョコレー島2','chocoisland2','ちょこいｓぁんｄ２','sfcchocoisland2','ｓｆっちょこいｓぁんｄ２'] },
             { id: 'kin', full: 'キノピオファクトリー', abbr: 'キノファク', enAbbr: 'rTF', inputs: ['kin', 'きｎ','fac','fak','hula','fula','huxa','fuxa','ふぁｋ','ふぁｃ','ふぁく','kou','cou','こう','工','tf','rt','toa','とあ'] },
             { id: 'ku', full: 'クッパキャッスル', abbr: 'クパキャ', enAbbr: 'BC', inputs: ['ku','cu','qu','く','くｐ','くっ','ky','kixya','kilya','bca','bow','cas','ｂか','ぼｗ','かｓ'] },
             { id: 'do', full: 'どんぐりツリーハウス', abbr: 'ドンつり', enAbbr: 'AH', inputs: ['do', 'ど','どｎ','どん','tur','tsur','つｒ','つり','ah','団','栗','ac'] },
-            { id: 'marios', full: 'マリオサーキット', abbr: 'マリサ', enAbbr: 'MC', inputs: ['marios', 'まりおｓ','まりおさ', 'maris', 'まりｓ','まりさ','mc','sa-kitto','さーきっと', 'circuit'] },
-            { id: 're', full: 'レインボーロード', abbr: '虹', enAbbr: 'RR', inputs: ['re', 'れ','れい','虹','にｊ','にじ', 'ni', 'に','rr','rai','らい'] },
+            { id: 'marios', full: 'マリオサーキット', abbr: 'マリサ', enAbbr: 'MC', inputs: ['mariosa-kitto', 'まりおさーきっと', 'marisa','まりさ','mc','sa-kitto','さーきっと', 'circuit','mariocircuit'] },
+            { id: 'marios1', full: 'SFCマリオサーキット1', abbr: 'SFCマリサ1', enAbbr: 'rMC1', inputs: ['sfcmariosa-kitto1','sfcまりおさーきっと1', 'sfcmarisa1','sfcまりさ1','rmc1','sa-kitto1','さーきっと1', 'circuit1','mariocircuit1','sfcmariocircuit1','ｓｆｃまりおしｒくいｔ１'] },
+            { id: 'marios2', full: 'SFCマリオサーキット2', abbr: 'SFCマリサ2', enAbbr: 'rMC2', inputs: ['sfcmariosa-kitto2','sfcまりおさーきっと2', 'sfcmarisa2','sfcまりさ2','rmc2','sa-kitto2','さーきっと2', 'circuit2','mariocircuit2','sfcmariocircuit2','ｓｆｃまりおしｒくいｔ２'] },
+            { id: 'marios3', full: 'SFCマリオサーキット3', abbr: 'SFCマリサ3', enAbbr: 'rMC3', inputs: ['sfcmariosa-kitto3','sfcまりおさーきっと3', 'sfcmarisa3','sfcまりさ3','rmc3','sa-kitto3','さーきっと3', 'circuit3','mariocircuit3','sfcmariocircuit3','ｓｆｃまりおしｒくいｔ３'] },
+            { id: 're', full: 'レインボーロード', abbr: '虹', enAbbr: 'RR', inputs: ['rein', 'れいん','虹','にｊ','にじ', 'ni', 'に','rr','rai','らい'] },
         ];
 
         let courseDictionary = {};
@@ -1390,7 +1443,7 @@
             <div style="display: flex; justify-content: space-between; align-items: flex-start; background: #fff; padding: 10px 15px; border: 1px solid #ddd; border-radius: 6px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);">
                 <details style="flex: 1; outline: none;" ${openAttr} ontoggle="localStorage.setItem('customAbbrDetailsOpen', this.open)">
                     <summary style="cursor: pointer; font-weight: bold; font-size: 14px; user-select: none; color: #333;">
-                        📝 変換キー・略称変更設定
+                        変換キー・略称変更設定
                     </summary>
                     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; margin-top: 15px; max-height: 250px; overflow-y: auto; padding-right: 5px;">
             `;
@@ -2099,6 +2152,75 @@
             } else if (e.key === 'Enter') {
                 addRace();
             } else {
+                if (e.ctrlKey) {
+                    if (e.key === "ArrowRight") {
+                        e.preventDefault();
+                        let emptyIdx = -1;
+                        for (let i = idx + 1; i <= 23; i++) {
+                            const el = document.getElementById(`newRaceInput_${i}`);
+                            if (el && el.value === '') {
+                                emptyIdx = i;
+                                break;
+                            }
+                        }
+                        if (emptyIdx === -1) return;
+                        for (let i = emptyIdx - 1; i >= idx; i--) {
+                            const currEl = document.getElementById(`newRaceInput_${i}`);
+                            const nextEl = document.getElementById(`newRaceInput_${i + 1}`);
+                            if (currEl && nextEl) {
+                                nextEl.value = currEl.value;
+                                handleInputBlur({ target: nextEl }); 
+                            }
+                        }
+                        const currEl = document.getElementById(`newRaceInput_${idx}`);
+                        if (currEl) {
+                            currEl.value = '';
+                            handleInputBlur({ target: currEl });
+                        }
+                        const nextInput = document.getElementById(`newRaceInput_${idx + 1}`);
+                        if (nextInput) {
+                            nextInput.focus();
+                            handleInputFocus({ target: nextInput });
+                        }
+                        
+                        if (typeof checkAutoAdd === 'function') checkAutoAdd();
+                        return;
+
+                    } else if (e.key === "ArrowLeft") {
+                        e.preventDefault();
+                        let emptyIdx = -1;
+                        for (let i = idx - 1; i >= 0; i--) {
+                            const el = document.getElementById(`newRaceInput_${i}`);
+                            if (el && el.value === '') {
+                                emptyIdx = i;
+                                break;
+                            }
+                        }
+                        if (emptyIdx === -1) return;
+                        for (let i = emptyIdx + 1; i <= idx; i++) {
+                            const currEl = document.getElementById(`newRaceInput_${i}`);
+                            const prevEl = document.getElementById(`newRaceInput_${i - 1}`);
+                            if (currEl && prevEl) {
+                                prevEl.value = currEl.value;
+                                handleInputBlur({ target: prevEl });
+                            }
+                        }
+                        const currEl = document.getElementById(`newRaceInput_${idx}`);
+                        if (currEl) {
+                            currEl.value = '';
+                            handleInputBlur({ target: currEl });
+                        }
+                        const prevInput = document.getElementById(`newRaceInput_${idx - 1}`);
+                        if (prevInput) {
+                            prevInput.focus();
+                            handleInputFocus({ target: prevInput });
+                        }
+                        
+                        if (typeof checkAutoAdd === 'function') checkAutoAdd();
+                        return;
+                    }
+                }
+
                 let next = -1;
                 if (e.key === "ArrowLeft") {
                     if (idx > 0) next = idx - 1;
@@ -2261,18 +2383,19 @@
             document.getElementById('borderAdvancedConfigs').style.display = (mode === 'target') ? 'block' : 'none';
         
             const teamMap = {};
+            let orderIdx = 0;
             document.querySelectorAll('.team-input-row').forEach(row => {
                 const a = row.querySelector('.abbr').value, n = row.querySelector('.name').value, c = parseInt(row.querySelector('.correction').value) || 0;
-                if(a) teamMap[a] = { name: n, correction: c };
+                if(a) teamMap[a] = { name: n, correction: c, order: orderIdx++ };
             });
         
             const myTeam = document.getElementById('myTeamSelect').value;
             const targetRank = parseInt(document.getElementById('targetRank').value) || 1;
             const threshold = parseInt(document.getElementById('threshold').value) || 0;
-        
-            let scores = {}; Object.values(teamMap).forEach(t => scores[t.name] = t.correction);
-            raceHistory.forEach(r => { r.teams.split(/\s+/).forEach((a, i) => { if(teamMap[a]) scores[teamMap[a].name] += pointsTable[i]; }); });
-            let sorted = Object.keys(scores).map(n => ({ name: n, score: scores[n] })).sort((a,b) => b.score - a.score);
+
+            let teamStats = {}; Object.values(teamMap).forEach(t => {teamStats[t.name] = { score: t.correction, order: t.order };});
+            raceHistory.forEach(r => {r.teams.split(/\s+/).forEach((a, i) => {if(teamMap[a]) teamStats[teamMap[a].name].score += pointsTable[i]; }); });          
+            let sorted = Object.keys(teamStats).map(n => ({ name: n, score: teamStats[n].score, order: teamStats[n].order })).sort((a, b) => {if (b.score !== a.score) return b.score - a.score;return a.order - b.order;});
             let myIdx = sorted.findIndex(t => t.name === myTeam), myScore = myIdx !== -1 ? sorted[myIdx].score : null;
             
             let myActualRank = 1;
@@ -2694,6 +2817,61 @@
                     validateHistoryAbbrs(i);
                 }
             }
+        }
+
+        // 消費コースを表示する
+        function showConsumedCourses() {
+            const tbody = document.getElementById('consumedCoursesBody');
+            tbody.innerHTML = ''; // 以前の表示をクリア
+
+            // raceHistoryからコース履歴を読み取って表の行を作成
+            raceHistory.forEach((r, i) => {
+                const tr = document.createElement('tr');
+                tr.style.borderBottom = '1px solid #ddd';
+
+                const tdLeft = document.createElement('td');
+                tdLeft.style.padding = '8px';
+                tdLeft.style.whiteSpace = 'nowrap';
+                tdLeft.style.borderRight = '1px solid #ddd';
+                tdLeft.style.backgroundColor = '#f8f9fa';
+                tdLeft.innerText = `第${i + 1}レース`;
+
+                const tdRight = document.createElement('td');
+                tdRight.style.padding = '8px';
+                // コース名が空欄の場合は「（未設定）」とする
+                tdRight.innerText = r.course ? r.course : '（未設定）';
+
+                tr.appendChild(tdLeft);
+                tr.appendChild(tdRight);
+                tbody.appendChild(tr);
+            });
+
+            // ポップアップを表示状態（flex）にする
+            document.getElementById('consumedCoursesModal').style.display = 'flex';
+        }
+
+        // 消費コースのポップアップを閉じる
+        function closeConsumedCourses() {
+            document.getElementById('consumedCoursesModal').style.display = 'none';
+        }
+
+        // 消費コースのコピー
+        function copyConsumedCourses(btn) {
+            const courses = raceHistory
+                .map(r => r.course ? r.course.trim() : '')
+                .filter(course => course !== ''); 
+            const copyText = '消費コース：' + courses.join('，');
+            navigator.clipboard.writeText(copyText).then(() => {
+                btn.innerText = 'コピーしました';
+                btn.style.backgroundColor = '#d4edda'; 
+                
+                setTimeout(() => {
+                    btn.innerText = 'コピー';
+                    btn.style.backgroundColor = '';
+                }, 1000);
+            }).catch(err => {
+                console.error('コピーに失敗しました: ', err); 
+            });
         }
 
         // 履歴矢印キー設定
